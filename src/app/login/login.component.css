@@ -1,0 +1,7 @@
+mat-card {
+  width: 300px;
+  margin: auto;
+  position: relative;
+  top: 20%;
+  text-align: center;
+}

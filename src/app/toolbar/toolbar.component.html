@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1 [ngClass]="{ center : !userService.username }">Endamti</h1>
+
+    <div *ngIf="userService.username" class="right">
+      <button mat-flat-button color="primary">Overview</button>
+      <button mat-flat-button color="primary">Members</button>
+      <button mat-flat-button color="primary">Reporting</button>
+      <button mat-flat-button color="primary">Settings</button>
+      <button mat-flat-button color="primary" (click)="userService.logout()">Sign out</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

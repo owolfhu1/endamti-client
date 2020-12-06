@@ -1,0 +1,10 @@
+.center {
+  margin: auto;
+  font-size: xx-large;
+}
+
+.right {
+  text-align: right;
+  position: absolute;
+  right: 10px;
+}
