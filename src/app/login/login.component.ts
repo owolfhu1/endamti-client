@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     if (this.passCtrl.valid && this.nameCtrl.valid) {
-      this.apiService.login(this.nameCtrl.value, this.passCtrl.value, success => {
+      this.apiService.login(this.nameCtrl.value, this.userService.hashPass(this.passCtrl.value), success => {
         if (!success) {
           this.message = 'Bad user name and/or password';
         } else {
@@ -109,6 +109,7 @@ export class RegisterDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<RegisterDialogComponent>,
     private apiService: ApiService,
+    private userService: UserService,
   ) {
     this.nameCtrl = new FormControl('', [Validators.required]);
     this.passCtrl = new FormControl('', [Validators.required]);
@@ -117,7 +118,7 @@ export class RegisterDialogComponent {
 
   register() {
     if (this.passCtrl.valid && this.nameCtrl.valid && this.emailCtrl.valid) {
-      this.apiService.register(this.nameCtrl.value, this.passCtrl.value, this.emailCtrl.value, success => {
+      this.apiService.register(this.nameCtrl.value, this.userService.hashPass(this.passCtrl.value), this.emailCtrl.value, success => {
         if (success) {
           this.success = true;
           this.header = 'Success!';

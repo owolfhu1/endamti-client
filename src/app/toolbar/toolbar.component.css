@@ -8,3 +8,8 @@
   position: absolute;
   right: 10px;
 }
+
+.second-toolbar {
+  display: flex;
+  justify-content: center;
+}

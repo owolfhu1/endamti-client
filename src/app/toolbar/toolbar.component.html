@@ -3,11 +3,53 @@
     <h1 [ngClass]="{ center : !userService.username }">Endamti</h1>
 
     <div *ngIf="userService.username" class="right">
-      <button mat-flat-button color="primary">Overview</button>
-      <button mat-flat-button color="primary">Members</button>
-      <button mat-flat-button color="primary">Reporting</button>
-      <button mat-flat-button color="primary">Settings</button>
+      <button mat-flat-button color="primary" (click)="navigate('home')">Overview</button>
+      <button mat-flat-button color="primary" (click)="navigate('members')">Members</button>
+      <button mat-flat-button color="primary" (click)="navigate('reporting')">Reporting</button>
+      <button mat-flat-button color="primary" (click)="navigate('settings')">Settings</button>
       <button mat-flat-button color="primary" (click)="userService.logout()">Sign out</button>
     </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="second-toolbar" *ngIf="userService.username">
+    <div>
+      <button mat-button [matMenuTriggerFor]="communication">Communication</button>
+      <mat-menu #communication>
+        <button mat-menu-item>Email Templates</button>
+        <button mat-menu-item>Sms Templates</button>
+      </mat-menu>
+    </div>
+
+    <div>
+      <button mat-button [matMenuTriggerFor]="productServices">Product & Services</button>
+      <mat-menu #productServices>
+        <button mat-menu-item>Applications</button>
+        <button mat-menu-item>Forms</button>
+        <button mat-menu-item>Classes</button>
+      </mat-menu>
+    </div>
+
+    <div>
+      <button mat-button [matMenuTriggerFor]="integration">Integration</button>
+      <mat-menu #integration>
+        <button mat-menu-item>Widget Links</button>
+        <button mat-menu-item>Portal Links</button>
+        <button mat-menu-item>Payment</button>
+      </mat-menu>
+    </div>
+
+    <div>
+      <button mat-button >Calendar</button>
+    </div>
+
+    <div>
+      <button mat-button [matMenuTriggerFor]="archive">Archive</button>
+      <mat-menu #archive>
+        <button mat-menu-item>Member Archive</button>
+        <button mat-menu-item>Documents</button>
+      </mat-menu>
+    </div>
+
+
   </mat-toolbar-row>
 </mat-toolbar>

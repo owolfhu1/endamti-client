@@ -1,9 +1,4 @@
 <app-toolbar></app-toolbar>
 
-<mat-drawer-container class="body" autosize>
-  <app-side-nav></app-side-nav>
-  <div [ngClass]="{ open: userService.username }" style="height: 100%">
-    <router-outlet></router-outlet>
-  </div>
+<router-outlet></router-outlet>
 
-</mat-drawer-container>

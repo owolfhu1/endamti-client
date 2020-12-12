@@ -15,8 +15,8 @@ import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import { SideNavComponent } from './side-nav/side-nav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     RegisterDialogComponent,
     HomeComponent,
     ToolbarComponent,
-    SideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +39,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

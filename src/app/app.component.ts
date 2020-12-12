@@ -10,7 +10,7 @@ import {UserService} from './services/user.service';
 export class AppComponent {
   title = 'endamti-client';
 
-  constructor(private router: Router, public userService: UserService) {
+  constructor(private router: Router) {
     router.navigate(['/login']);
   }
 }
