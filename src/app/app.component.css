@@ -1,4 +1,11 @@
-.body {
+:host {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
   background: cornflowerblue;
+  display: flex;
+  flex-grow: 1;
 }

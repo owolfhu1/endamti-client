@@ -4,7 +4,7 @@
   <h1>Welcome to Endamti</h1>
   <h3>Please login to continue</h3>
 
-  <mat-form-field class="full">
+  <mat-form-field class="full" appearance="outline">
     <mat-label>User Name</mat-label>
     <input type="text" matInput [formControl]="nameCtrl" placeholder="User Name">
     <mat-error *ngIf="nameCtrl.hasError('required')">
@@ -12,7 +12,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field class="full">
+  <mat-form-field class="full" appearance="outline">
     <mat-label>Password</mat-label>
     <input type="password" matInput [formControl]="passCtrl" placeholder="Password">
     <mat-error *ngIf="passCtrl.hasError('required')">
@@ -27,4 +27,8 @@
   <br><br>
 
   <button class="full" (click)="register()" color="accent" mat-raised-button>Register</button>
+
+  <br><br>
+
+  <button class="full" color="basic" mat-stroked-button>Forgot Password</button>
 </mat-card>

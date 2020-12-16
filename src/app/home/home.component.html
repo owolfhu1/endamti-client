@@ -1,1 +1,27 @@
-<h1>Home Page</h1>
+<mat-card class="module-card">
+  <div class="wrapper">
+
+
+    <div class="header">
+      <h1>Clients</h1>
+      <button mat-raised-button color="primary" (click)="addClient()">Add Client</button>
+    </div>
+
+
+    <mat-tab-group
+      class="tabs"
+      [selectedIndex]="selectedTab"
+      (selectedTabChange)="tabChanged($event)"
+    >
+      <mat-tab class="tabs" *ngFor="let tab of tabs; let i = index">
+        <ng-template mat-tab-label>
+          {{ tab.title }}
+          <mat-icon *ngIf="tab.closable" (click)="removeTab(i)">close</mat-icon>
+        </ng-template>
+        <app-tab-content class="tabs" [tab]="tab"></app-tab-content>
+      </mat-tab>
+    </mat-tab-group>
+
+
+  </div>
+</mat-card>

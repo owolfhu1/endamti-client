@@ -17,6 +17,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTabsModule} from '@angular/material/tabs';
+import { ClientSummaryComponent } from './home/client-summary/client-summary.component';
+import { ContentContainerDirective } from './directive/content-container.directive';
+import { TabContentComponent } from './model/tab-content/tab-content.component';
+import { AddClientComponent } from './home/add-client/add-client.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,10 @@ import {MatMenuModule} from '@angular/material/menu';
     RegisterDialogComponent,
     HomeComponent,
     ToolbarComponent,
+    ClientSummaryComponent,
+    ContentContainerDirective,
+    TabContentComponent,
+    AddClientComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +49,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatIconModule,
     MatSidenavModule,
     MatMenuModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

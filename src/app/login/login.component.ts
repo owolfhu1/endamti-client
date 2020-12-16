@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       <h3>{{ message }}</h3>
 
       <div *ngIf="!success">
-        <mat-form-field class="full">
+        <mat-form-field class="full" appearance="outline">
           <mat-label>User Name</mat-label>
           <input type="text" matInput [formControl]="nameCtrl" placeholder="User Name">
           <mat-error *ngIf="nameCtrl.hasError('required')">
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="full">
+        <mat-form-field class="full" appearance="outline">
           <mat-label>Email</mat-label>
           <input type="email" matInput [formControl]="emailCtrl" placeholder="email@example.com">
           <mat-error *ngIf="emailCtrl.hasError('required')">
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="full">
+        <mat-form-field class="full" appearance="outline">
           <mat-label>Password</mat-label>
           <input type="password" matInput [formControl]="passCtrl" placeholder="Password">
           <mat-error *ngIf="passCtrl.hasError('required')">
@@ -88,8 +88,7 @@ export class LoginComponent implements OnInit {
           </mat-error>
         </mat-form-field>
       </div>
-
-      <br *ngIf="!success"><br *ngIf="!success">
+        
       <button *ngIf="!success" class="full" (click)="register()" color="primary" mat-raised-button>Submit</button>
       <br><br>
       <button class="full" (click)="dialogRef.close()" [color]="success ? 'accent' : 'warn'" mat-raised-button>
