@@ -1,0 +1,9 @@
+<h2>{{ title }}</h2>
+<hr>
+<p>{{ message }}</p>
+<hr>
+<div class="buttons">
+  <button mat-raised-button color="warn" *ngIf="!isInfo" (click)="close(false)">{{ cancel }}</button>
+  &nbsp;
+  <button mat-raised-button color="primary" (click)="close(true)">{{ continue }}</button>
+</div>

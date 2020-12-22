@@ -3,3 +3,17 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
+::ng-deep.mat-paginator-container {
+  justify-content: space-between;
+}
+
+table {
+  width: 100%;
+}
+
+.filter-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

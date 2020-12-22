@@ -1,0 +1,155 @@
+<mat-card class="tab-body">
+
+  <div class="header">
+    <h1>{{ title }}</h1>
+    <div>
+      <button mat-stroked-button color="primary" *ngIf="data?.id" (click)="view()">View</button>
+      &nbsp;
+      <button mat-stroked-button color="warn" *ngIf="data?.id" (click)="delete()">Delete</button>
+      &nbsp;
+      <button mat-stroked-button color="primary" (click)="submit()">{{ data?.id ? 'Update' : 'Submit' }}</button>
+    </div>
+  </div>
+
+  <hr><br/>
+
+  <div [formGroup]="form">
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput placeholder="First Name" formControlName="firstname">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput placeholder="Last Name" formControlName="lastname">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Prefix</mat-label>
+        <input type="text" matInput placeholder="Prefix" formControlName="prefix">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Organization</mat-label>
+        <input type="text" matInput placeholder="First Name" formControlName="organization">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Phone Number</mat-label>
+        <input type="text" matInput placeholder="(xxx) xxx-xxx" formControlName="phone">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Other Phone</mat-label>
+        <input type="text" matInput placeholder="(xxx) xxx-xxx" formControlName="otherPhone">
+      </mat-form-field>
+
+      <div class="col-sm-3">
+        <mat-label>SMS</mat-label>
+        <p><mat-checkbox color="primary" formControlName="canSms" checked>receives SMS messages</mat-checkbox></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Street</mat-label>
+        <input type="text" matInput placeholder="Street" formControlName="street">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>City</mat-label>
+        <input type="text" matInput placeholder="City" formControlName="city">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>State</mat-label>
+        <input type="text" matInput placeholder="State" formControlName="state">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Zip</mat-label>
+        <input type="text" matInput placeholder="Zip" formControlName="zip">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Entry Date</mat-label>
+        <input matInput placeholder="Entry Date" [matDatepicker]="entryDate" formControlName="entryDate">
+        <mat-datepicker-toggle matSuffix [for]="entryDate"></mat-datepicker-toggle>
+        <mat-datepicker #entryDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Last Visit</mat-label>
+        <input matInput placeholder="last visit" [matDatepicker]="lastVisit" formControlName="lastVisit">
+        <mat-datepicker-toggle matSuffix [for]="lastVisit"></mat-datepicker-toggle>
+        <mat-datepicker #lastVisit></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-2">
+        <mat-label>Number of Visits</mat-label>
+        <input type="number" class="hide-num-arrows" matInput placeholder="number of visits" formControlName="visits">
+        <button mat-icon-button matSuffix (click)="visitsCtrl.patchValue(visitsCtrl.value + 1)"
+                matTooltip="plus one visit"><mat-icon>plus_one</mat-icon></button>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-2">
+        <mat-label>Balance</mat-label>
+        <input type="number" matInput placeholder="balance" formControlName="balance" class="hide-num-arrows">
+        <span matPrefix><mat-icon>attach_money</mat-icon>&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+
+      <div class="col-sm-2">
+        <mat-label>Active</mat-label>
+        <p><mat-checkbox color="primary" formControlName="active" checked>active</mat-checkbox></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Title</mat-label>
+        <input type="text" matInput placeholder="title" formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-3">
+        <mat-label>Gender</mat-label>
+        <input type="text" matInput placeholder="gender" formControlName="gender">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-2">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="PENDING">pending</mat-option>
+          <mat-option value="APPROVED">approved</mat-option>
+          <mat-option value="DENIED">denied</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-sm-2">
+        <mat-label>Notification Method</mat-label>
+        <mat-select formControlName="notificationBy">
+          <mat-option (click)="notificationByCtrl.patchValue(null)">none</mat-option>
+          <mat-option value="EMAIL">email</mat-option>
+          <mat-option value="SMS">sms</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="col-sm-2">
+        <mat-label>Opt In</mat-label>
+        <p><mat-checkbox color="primary" formControlName="optIn" checked>opt in</mat-checkbox></p>
+      </div>
+    </div>
+
+  </div>
+</mat-card>

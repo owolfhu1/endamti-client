@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Tab } from '../model/tab.model';
 import {ClientTabService} from './client-tab.service';
-import {AddClientComponent} from './add-client/add-client.component';
+import {ClientFormComponent} from './client-form/client-form.component';
 
 @Component({
   selector: 'app-home',
@@ -20,14 +20,7 @@ export class HomeComponent implements OnInit {
       this.selectedTab = tabs.findIndex(tab => tab.active);
       this.cdr.detectChanges();
     });
-  }
-
-  tabChanged(event) {
-    // console.log('tab changed', event);
-  }
-
-  addNewTab(component, title, data, closable) {
-    this.clientTabService.addTab(new Tab(component, title, data, closable));
+    this.clientTabService.refreshSummary.subscribe(() => this.selectedTab = 0);
   }
 
   removeTab(index: number) {
@@ -35,6 +28,6 @@ export class HomeComponent implements OnInit {
   }
 
   addClient() {
-    this.clientTabService.addTab(new Tab(AddClientComponent, 'Add Client', { type: 'add' }));
+    this.clientTabService.addTab(new Tab(ClientFormComponent, 'Add Client', -1, null));
   }
 }

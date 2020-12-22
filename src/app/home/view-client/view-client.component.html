@@ -1,0 +1,142 @@
+<mat-card class="tab-body">
+  <div class="header">
+    <h1>{{ title }}</h1>
+    <div>
+      <button mat-stroked-button color="primary" (click)="edit()">Edit</button>
+      &nbsp;
+      <button mat-stroked-button color="warn" (click)="delete()">Delete</button>
+    </div>
+  </div>
+
+  <hr><br/>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <mat-label><b>First Name</b></mat-label>
+      <p>{{ data.firstname || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>Last Name</b></mat-label>
+      <p>{{ data.lastname || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>Prefix</b></mat-label>
+      <p>{{ data.prefix || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>Organization</b></mat-label>
+      <p>{{ data.organization || '-' }}</p>
+    </div>
+  </div>
+
+  <br/><br/>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <mat-label><b>Email</b></mat-label>
+      <p>{{ data.email || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>Phone Number</b></mat-label>
+      <p>{{ data.phone || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>Other Phone</b></mat-label>
+      <p>{{ data.otherPhone || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>SMS</b></mat-label>
+      <p>{{ data.canSms ? 'SMS ok' : 'No SMS' }}</p>
+    </div>
+  </div>
+
+  <br/><br/>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <mat-label><b>Street</b></mat-label>
+      <p>{{ data.street || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>City</b></mat-label>
+      <p>{{ data.city || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>State</b></mat-label>
+      <p>{{ data.state || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>Zip</b></mat-label>
+      <p>{{ data.zip || '-' }}</p>
+    </div>
+  </div>
+
+  <br/><br/>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <mat-label><b>Entry Date</b></mat-label>
+      <p>{{ displayDate(data.entryDate) }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>Last Visit</b></mat-label>
+      <p>{{ displayDate(data.lastVisit) }}</p>
+    </div>
+
+    <div class="col-sm-2">
+      <mat-label><b>Number of Visits</b></mat-label>
+      <p>{{ data.visits || '0' }}</p>
+    </div>
+
+    <div class="col-sm-2">
+      <mat-label><b>Balance</b></mat-label>
+      <p>${{ data.balance || '0' }}.00</p>
+    </div>
+
+    <div class="col-sm-2">
+      <mat-label><b>Active</b></mat-label>
+      <p>{{ data.active ? 'Yes' : 'No' }}</p>
+    </div>
+  </div>
+
+  <br/><br/>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <mat-label><b>Title</b></mat-label>
+      <p>{{ data.title || '-' }}</p>
+    </div>
+
+    <div class="col-sm-3">
+      <mat-label><b>Gender</b></mat-label>
+      <p>{{ data.gender || '-' }}</p>
+    </div>
+
+    <div class="col-sm-2">
+      <mat-label><b>Status</b></mat-label>
+      <p>{{ data.status.toLowerCase() }}</p>
+    </div>
+
+    <div class="col-sm-2">
+      <mat-label><b>Notification Method</b></mat-label>
+      <p>{{ data.notificationBy?.toLowerCase() || '-' }}</p>
+    </div>
+
+    <div class="col-sm-2">
+      <mat-label><b>Opt In</b></mat-label>
+      <p>{{ data.optIn ? 'Yes' : 'No' }}</p>
+    </div>
+  </div>
+
+
+</mat-card>

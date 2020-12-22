@@ -7,10 +7,16 @@ import { ClientSummaryComponent } from './client-summary/client-summary.componen
   providedIn: 'root'
 })
 export class ClientTabService {
-  tabs: Tab[] = [ new Tab(ClientSummaryComponent, 'Summary', {}, false)];
+  tabs: Tab[] = [ new Tab(ClientSummaryComponent, 'Summary', null, {}, false) ];
   tabSub = new BehaviorSubject<Tab[]>(this.tabs);
+  refreshSummary = new BehaviorSubject<void>(null);
 
-  constructor() { }
+  constructor() {
+    this.refreshSummary.subscribe(() => {
+      this.tabs.forEach(t => t.active = false);
+      this.tabs[0].active = true;
+    });
+  }
 
   removeTab(index: number): void {
     this.tabs.splice(index, 1);
@@ -18,7 +24,15 @@ export class ClientTabService {
     this.tabSub.next(this.tabs);
   }
 
-  public addTab(tab: Tab) {
+  removeById(clientId): void {
+    const index = this.tabs.map(tab => tab.clientId).indexOf(clientId);
+    if (index > -1) {
+      this.removeTab(index);
+    }
+  }
+
+  addTab(tab: Tab) {
+    this.removeById(tab.clientId);
     this.tabs.forEach(t => t.active = false);
     tab.id = this.tabs.length + 1;
     tab.active = true;

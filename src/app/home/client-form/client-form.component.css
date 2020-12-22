@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.button-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+input.hide-num-arrows::-webkit-outer-spin-button,
+input.hide-num-arrows::-webkit-inner-spin-button {
+  display: none;
+}
