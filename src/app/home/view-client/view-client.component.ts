@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Tab} from '../../model/tab.model';
-import {ClientFormComponent} from '../client-form/client-form.component';
-import {ClientTabService} from '../client-tab.service';
-import {ApiService} from '../../services/api.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Tab } from '../../shared/models/tab.model';
+import { ClientFormComponent } from '../client-form/client-form.component';
+import { ClientTabService } from '../client-tab.service';
+import { ApiService } from '../../shared/services/api.service';
+import { EmailService } from '../../shared/services/email.service';
+import { SmsService } from '../../shared/services/sms.service';
 
 @Component({
   selector: 'app-view-client',
@@ -13,7 +15,12 @@ export class ViewClientComponent implements OnInit {
   @Input() data;
   @Input() title;
 
-  constructor(private clientTabService: ClientTabService, private apiService: ApiService) { }
+  constructor(
+    private clientTabService: ClientTabService,
+    private apiService: ApiService,
+    private emailService: EmailService,
+    private smsService: SmsService,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -37,5 +44,13 @@ export class ViewClientComponent implements OnInit {
   displayDate(dateString: string) {
     const date = new Date(dateString);
     return dateString ? date.toDateString() : '-';
+  }
+
+  email() {
+    this.emailService.sendEmail(this.data);
+  }
+
+  sms() {
+    this.smsService.sendSMS(this.data);
   }
 }

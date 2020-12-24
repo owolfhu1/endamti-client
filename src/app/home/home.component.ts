@@ -1,7 +1,7 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { Tab } from '../model/tab.model';
-import {ClientTabService} from './client-tab.service';
-import {ClientFormComponent} from './client-form/client-form.component';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Tab } from '../shared/models/tab.model';
+import { ClientTabService } from './client-tab.service';
+import { ClientFormComponent } from './client-form/client-form.component';
 
 @Component({
   selector: 'app-home',

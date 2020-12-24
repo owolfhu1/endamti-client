@@ -1,12 +1,14 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {ApiService} from '../../services/api.service';
-import {Client} from '../../model/api.model';
-import {ClientTabService} from '../client-tab.service';
-import {Tab} from '../../model/tab.model';
-import {ClientFormComponent} from '../client-form/client-form.component';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import {ViewClientComponent} from '../view-client/view-client.component';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { ApiService } from '../../shared/services/api.service';
+import { Client } from '../../shared/models/api.model';
+import { ClientTabService } from '../client-tab.service';
+import { Tab } from '../../shared/models/tab.model';
+import { ClientFormComponent } from '../client-form/client-form.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ViewClientComponent } from '../view-client/view-client.component';
+import { EmailService } from '../../shared/services/email.service';
+import { SmsService } from '../../shared/services/sms.service';
 
 @Component({
   selector: 'app-client-summary',
@@ -15,7 +17,7 @@ import {ViewClientComponent} from '../view-client/view-client.component';
 })
 export class ClientSummaryComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['actions', 'number', 'active', 'name', 'organization', 'entryDate', 'status'];
-  dataSource = new MatTableDataSource<any>([]);
+  dataSource = new MatTableDataSource<Client>([]);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   hideInactive = true;
   firstname: string;
@@ -30,6 +32,8 @@ export class ClientSummaryComponent implements OnInit, AfterViewInit {
   constructor(
     private apiService: ApiService,
     private clientTabService: ClientTabService,
+    private emailService: EmailService,
+    private smsService: SmsService,
     ) { }
 
   ngOnInit(): void {
@@ -42,7 +46,7 @@ export class ClientSummaryComponent implements OnInit, AfterViewInit {
     this.organization = null;
     this.hideInactive = true;
     this.status = 'ANY';
-    this.apiService.clientSearch({ hideInactive: true }, results => this.dataSource.data = results);
+    this.search();
   }
 
   search(): void {
@@ -99,5 +103,13 @@ export class ClientSummaryComponent implements OnInit, AfterViewInit {
     this.apiService.activateClient(id, () => {
       this.search();
     });
+  }
+
+  email(client: Client) {
+    this.emailService.sendEmail(client);
+  }
+
+  sms(client: Client) {
+    this.smsService.sendSMS(client);
   }
 }

@@ -1,6 +1,6 @@
-import {Component, ComponentFactoryResolver, Input, OnInit, ViewChild} from '@angular/core';
-import {Tab} from '../tab.model';
-import {ContentContainerDirective} from '../../directive/content-container.directive';
+import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Tab } from '../../models/tab.model';
+import { ContentContainerDirective } from '../../../directive/content-container.directive';
 
 @Component({
   selector: 'app-tab-content',

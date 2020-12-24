@@ -1,11 +1,22 @@
 :host {
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
 }
 
 table {
   width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .filter-wrapper {

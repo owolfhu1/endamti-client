@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Tab } from '../model/tab.model';
+import { Tab } from '../shared/models/tab.model';
 import { ClientSummaryComponent } from './client-summary/client-summary.component';
 
 @Injectable({

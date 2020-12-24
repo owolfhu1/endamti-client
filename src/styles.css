@@ -19,3 +19,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .tab-body {
   flex-grow: 1;
 }
+
+.module-card {
+  margin: 15px;
+  flex-grow: 1;
+}

@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {ApiService} from '../../services/api.service';
-import {ClientTabService} from '../client-tab.service';
-import {Tab} from '../../model/tab.model';
-import {ViewClientComponent} from '../view-client/view-client.component';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ApiService } from '../../shared/services/api.service';
+import { ClientTabService } from '../client-tab.service';
+import { Tab } from '../../shared/models/tab.model';
+import { ViewClientComponent } from '../view-client/view-client.component';
 
 @Component({
   selector: 'app-client-form',

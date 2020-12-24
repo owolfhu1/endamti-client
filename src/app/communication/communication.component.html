@@ -1,0 +1,83 @@
+<mat-card class="module-card">
+  <div class="wrapper">
+    <div class="header">
+      <h1>Communications</h1>
+
+      <div>
+        <button mat-raised-button color="primary" (click)="templates()">Templates</button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="filter-wrapper">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Sender</mat-label>
+          <input type="text" matInput  placeholder="sent by" [(ngModel)]="sentBy">
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field appearance="outline">
+          <mat-label>Destination</mat-label>
+          <input type="text" matInput  placeholder="destination" [(ngModel)]="destination">
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field appearance="outline">
+          <mat-label>Communication Type</mat-label>
+          <mat-select [(ngModel)]="type">
+            <mat-option value="ANY">Any</mat-option>
+            <mat-option value="EMAIL">Email</mat-option>
+            <mat-option value="SMS">SMS</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-stroked-button (click)="search()" color="primary">Search</button>
+        &nbsp;
+        <button mat-stroked-button (click)="reset()" color="warn">Reset</button>
+      </div>
+    </div>
+
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef>View</th>
+        <td mat-cell *matCellDef="let communication">
+          <button (click)="view(communication)" mat-icon-button matTooltip="view communication">
+            <mat-icon>pageview</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let communication"> {{ communication.type.toLowerCase() }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sentBy">
+        <th mat-header-cell *matHeaderCellDef>Sender</th>
+        <td mat-cell *matCellDef="let communication"> {{ communication.username }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="destination">
+        <th mat-header-cell *matHeaderCellDef>Destination</th>
+        <td mat-cell *matCellDef="let communication"> {{ communication.destination }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef>Subject</th>
+        <td mat-cell *matCellDef="let communication"> {{ communication.subject || '-' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date Sent</th>
+        <td mat-cell *matCellDef="let communication"> {{ displayDateAndTime(communication.date) }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[3, 5, 10]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-card>

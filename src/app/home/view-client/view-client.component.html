@@ -5,6 +5,10 @@
       <button mat-stroked-button color="primary" (click)="edit()">Edit</button>
       &nbsp;
       <button mat-stroked-button color="warn" (click)="delete()">Delete</button>
+      &nbsp;
+      <button mat-stroked-button color="primary" *ngIf="data.email" (click)="email()">Send Email</button>
+      &nbsp;
+      <button mat-stroked-button color="primary" *ngIf="data.canSms && (data.phone || data.otherPhone)" (click)="sms()">Send SMS</button>
     </div>
   </div>
 

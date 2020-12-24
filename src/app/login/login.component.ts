@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ApiService } from '../services/api.service';
-import {Router} from '@angular/router';
-import {UserService} from '../services/user.service';
+import { ApiService } from '../shared/services/api.service';
+import { Router } from '@angular/router';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-login',
