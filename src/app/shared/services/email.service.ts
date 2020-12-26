@@ -9,6 +9,7 @@ import { MatSelect } from '@angular/material/select';
 import { takeUntil } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { CommunicationService } from '../../communication/communication.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class EmailService {
   template: `
     <h1>
       Send Email
-      <span *ngIf="!clients?.length">
+      <span *ngIf="!clients?.length && client">
         &nbsp;to #{{client.id}} {{client.prefix}}{{client.prefix ? '.' : ''}} {{client.firstname}} {{client.lastname}}
       </span>
     </h1>
@@ -117,6 +118,7 @@ export class EmailDialogComponent implements OnDestroy {
     private apiService: ApiService,
     private userService: UserService,
     private communicationService: CommunicationService,
+    private snackBar: MatSnackBar,
   ) {
     this.client = data?.client;
     if (!this.client) {
@@ -177,6 +179,7 @@ export class EmailDialogComponent implements OnDestroy {
     this.apiService.sendEmail(body, res => {
       if (res) {
         this.communicationService.refreshCommunication.next();
+        this.snackBar.open(res, 'ok');
         this.dialogRef.close(true);
       }
     });

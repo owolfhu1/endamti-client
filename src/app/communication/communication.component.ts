@@ -162,7 +162,7 @@ export class ViewCommunicationDialogComponent implements OnInit {
         <mat-label>Title</mat-label>
         <input type="text" matInput [(ngModel)]="title">
       </mat-form-field>
-        
+
       <mat-form-field appearance="outline" *ngIf="mode === 'EDIT'">
         <mat-label>Title</mat-label>
         <mat-select [(ngModel)]="title">

@@ -41,6 +41,7 @@ import {
 } from './communication/communication.component';
 import { SMSDialogComponent } from './shared/services/sms.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     CKEditorModule,
     NgxMatSelectSearchModule,
     MatButtonToggleModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

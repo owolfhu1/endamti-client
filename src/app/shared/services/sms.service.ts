@@ -8,6 +8,7 @@ import { ApiService } from './api.service';
 import { UserService } from './user.service';
 import { takeUntil } from 'rxjs/operators';
 import { CommunicationService } from '../../communication/communication.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class SmsService {
   selector: 'app-sms-dialog',
   template: `
     <h1>Send SMS
-      <span *ngIf="!clients?.length">
+      <span *ngIf="!clients?.length && client">
         &nbsp;to #{{client.id}} {{client.prefix}}{{client.prefix ? '.' : ''}} {{client.firstname}} {{client.lastname}}
       </span>
     </h1>
@@ -118,6 +119,7 @@ export class SMSDialogComponent implements OnDestroy {
     private apiService: ApiService,
     private userService: UserService,
     private communicationService: CommunicationService,
+    private snackBar: MatSnackBar,
   ) {
     this.client = data?.client;
     if (!this.client) {
@@ -178,6 +180,7 @@ export class SMSDialogComponent implements OnDestroy {
     this.apiService.sendSMS(body, res => {
       if (res) {
         this.communicationService.refreshCommunication.next();
+        this.snackBar.open(res, 'ok');
         this.dialogRef.close(true);
       }
     });
